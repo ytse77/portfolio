@@ -157,58 +157,12 @@
       animation: fadeUp 0.7s ease forwards 0.8s;
     }
 
-    /* ── Notify form ── */
-    .notify {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin-top: 2.4rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      overflow: hidden;
-      background: var(--surface);
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.7s ease forwards 1s;
-      transition: border-color 0.3s;
-    }
-    .notify:focus-within {
-      border-color: #555;
-    }
-    .notify input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text);
-      font-family: 'Sora', sans-serif;
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      padding: 13px 20px;
-      width: 220px;
-    }
-    .notify input::placeholder { color: var(--muted); }
-    .notify button {
-      background: var(--accent);
-      color: #111;
-      border: none;
-      font-family: 'Sora', sans-serif;
-      font-weight: 600;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 13px 22px;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s;
-    }
-    .notify button:hover { background: #fff; }
-
     /* ── Corner label ── */
     .corner {
       position: fixed;
       bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -235,17 +189,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Success state ── */
-    .notify.submitted .notify-input-wrap { display: none; }
-    .success-msg {
-      display: none;
-      color: var(--muted);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      padding: 13px 24px;
-    }
-    .notify.submitted .success-msg { display: block; }
-    .notify.submitted { cursor: default; }
+
   </style>
 </head>
 <body>
@@ -272,40 +216,13 @@
 
     <p class="sub">
       A new portfolio of graphic design &amp; 3D work is on the way.
-      Leave your email to be the first to know.
     </p>
-
-    <div class="notify" id="notify">
-      <div class="notify-input-wrap" style="display:flex;align-items:center;">
-        <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="off" />
-        <button onclick="handleNotify()">Notify me</button>
-      </div>
-      <span class="success-msg">✦ &nbsp;You're on the list.</span>
-    </div>
 
   </main>
 
   <p class="corner">&#169; 2025 &mdash; All rights reserved</p>
 
-  <script>
-    function handleNotify() {
-      const input = document.getElementById('emailInput');
-      const form = document.getElementById('notify');
-      if (!input.value || !input.value.includes('@')) {
-        input.style.color = '#888';
-        input.placeholder = 'Enter a valid email';
-        setTimeout(() => {
-          input.style.color = '';
-          input.placeholder = 'your@email.com';
-        }, 2000);
-        return;
-      }
-      form.classList.add('submitted');
-    }
-    document.getElementById('emailInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') handleNotify();
-    });
-  </script>
+
 
 </body>
 </html>

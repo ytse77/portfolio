@@ -3,31 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap" rel="stylesheet" />
+  <title>Roberto Rodriguez Lightbourne — Design & 3D</title>
+  <meta name="description" content="Portfolio of Roberto Rodriguez Lightbourne — 3D Generalist & Graphic Designer" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #1a1a1a;
-      --surface:   #212121;
-      --border:    #2e2e2e;
-      --text:      #ececec;
-      --muted:     #737373;
-      --accent:    #e8e8e8;
-      --glow:      rgba(255,255,255,0.06);
+      --bg:      #1a1a1a;
+      --surface: #212121;
+      --border:  #2e2e2e;
+      --text:    #ececec;
+      --muted:   #737373;
+      --accent:  #e8e8e8;
     }
 
-    html, body {
-      height: 100%;
+    html { scroll-behavior: smooth; }
+
+    body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Sora', sans-serif;
       font-weight: 600;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* ── Noise grain overlay ── */
+    /* Noise grain */
     body::before {
       content: '';
       position: fixed;
@@ -35,10 +36,10 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
       opacity: 0.03;
       pointer-events: none;
-      z-index: 100;
+      z-index: 400;
     }
 
-    /* ── Ambient gradient orbs ── */
+    /* Orbs */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -50,7 +51,6 @@
       width: 520px; height: 520px;
       background: radial-gradient(circle, rgba(180,180,200,0.07) 0%, transparent 70%);
       top: -160px; left: -160px;
-      animation-delay: 0s;
     }
     .orb-2 {
       width: 400px; height: 400px;
@@ -60,11 +60,11 @@
     }
     @keyframes drift {
       from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(40px, 30px) scale(1.08); }
+      to   { transform: translate(40px,30px) scale(1.08); }
     }
 
-    /* ── Grid lines ── */
-    .grid {
+    /* Grid background */
+    .grid-bg {
       position: fixed;
       inset: 0;
       background-image:
@@ -74,22 +74,61 @@
       opacity: 0.35;
       pointer-events: none;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      z-index: 0;
     }
 
-    /* ── Layout ── */
-    .stage {
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+    }
+    .nav.scrolled {
+      background: rgba(26,26,26,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+    .nav-logo {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-link {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
       position: relative;
       z-index: 10;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      padding: 2rem;
-      gap: 0;
+      padding: 8rem 2.5rem 5rem;
+    }
+    .hero-inner {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* ── Eyebrow tag ── */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -102,7 +141,7 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 999px;
-      margin-bottom: 2.4rem;
+      margin-bottom: 2rem;
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.7s ease forwards 0.2s;
@@ -113,18 +152,14 @@
       background: var(--muted);
       animation: pulse 2.4s ease-in-out infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.25; }
-    }
 
-    /* ── Main headline ── */
     .headline {
-      font-size: clamp(3.2rem, 10vw, 8.5rem);
+      font-size: clamp(2.6rem, 8vw, 7rem);
       line-height: 0.92;
       letter-spacing: -0.04em;
       text-align: center;
       color: var(--accent);
+      margin-bottom: 1.2rem;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.8s ease forwards 0.4s;
@@ -134,95 +169,826 @@
       color: var(--muted);
     }
 
-    /* ── Divider ── */
+    .tagline {
+      font-size: clamp(0.65rem, 1.4vw, 0.82rem);
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .cv-wrap {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s ease forwards 0.7s;
+    }
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cv-btn:hover { color: var(--text); border-color: var(--muted); }
+    .cv-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      min-width: 140px;
+      z-index: 50;
+    }
+    .cv-dropdown.open { display: flex; }
+    .cv-option {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 18px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-option:last-child { border-bottom: none; }
+    .cv-option:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+
     .divider {
       width: 1px;
       height: 48px;
       background: linear-gradient(to bottom, transparent, var(--border), transparent);
-      margin: 2.4rem 0;
+      margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.65s;
+      animation: fadeUp 0.6s ease forwards 0.75s;
     }
 
-    /* ── Sub-copy ── */
-    .sub {
-      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      text-align: center;
-      max-width: 360px;
-      line-height: 1.7;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.7s ease forwards 0.8s;
-    }
-
-    /* ── Corner label ── */
-    .corner {
-      position: fixed;
-      bottom: 2rem;
+    .reel-wrap {
       width: 100%;
-      text-align: center;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #404040;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
       opacity: 0;
-      animation: fadeUp 0.6s ease forwards 1.3s;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards 0.9s;
+    }
+    .reel-play {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      cursor: pointer;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, #242424 0%, var(--surface) 100%);
+      border: none;
+      padding: 0;
+      transition: background 0.35s;
+    }
+    .reel-play:hover {
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, #2c2c2c 0%, #222 100%);
+    }
+    .reel-play-icon {
+      width: 68px;
+      height: 68px;
+      transition: transform 0.25s ease;
+    }
+    .reel-play:hover .reel-play-icon { transform: scale(1.1); }
+    .reel-play-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
     }
 
-    /* ── Floating markers (decorative) ── */
-    .marker {
-      position: fixed;
-      font-size: 0.55rem;
+    /* ── Work Section ── */
+    .work {
+      position: relative;
+      z-index: 10;
+      padding: 6rem 2.5rem 8rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .work-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Grid ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .card:hover .card-bg { transform: scale(1.05); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.15) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .card:hover .card-overlay { opacity: 1; }
+
+    .card-video-tint {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      pointer-events: none;
+    }
+
+    .card-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(236,236,236,0.3);
+      background: rgba(26,26,26,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: transform 0.25s ease, background 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .card:hover .card-play {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(26,26,26,0.75);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      font-size: 0.52rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #333;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 1.5s;
+      color: var(--muted);
+      border: 1px solid rgba(46,46,46,0.8);
+      background: rgba(26,26,26,0.75);
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
     }
-    .marker-tl { top: 2rem; left: 2rem; }
-    .marker-tr { top: 2rem; right: 2rem; }
 
-    /* ── Shared animation ── */
+    .card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.2rem;
+      transform: translateY(6px);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.35s ease;
+    }
+    .card:hover .card-info { opacity: 1; transform: translateY(0); }
+
+    .card-title {
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .card-sub {
+      font-size: 0.55rem;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(12,12,12,0.96);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.8rem; right: 1.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: 'Sora', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .lightbox-close:hover {
+      color: var(--text);
+      border-color: var(--muted);
+      background: #2a2a2a;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-family: 'Sora', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      z-index: 10;
+    }
+    .lightbox-arrow:hover {
+      color: var(--text);
+      border-color: var(--muted);
+      background: #2a2a2a;
+    }
+    .lightbox-prev { left: 1.2rem; }
+    .lightbox-next { right: 1.2rem; }
+    .lightbox-arrow.hidden { display: none; }
+
+    .lightbox-inner {
+      width: 100%;
+      max-width: min(95vw, calc(88vh * 16 / 9));
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .lightbox-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-media iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .lightbox-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .lightbox-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .lightbox-category {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .lightbox-title {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #404040;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Animations ── */
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
+    /* ── Category Tabs ── */
+    .work-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tab-btn:last-child { border-right: none; }
+
+    /* ── Pagination ── */
+    .work-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .page-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-family: 'Sora', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .page-btn:hover:not(:disabled) {
+      color: var(--text);
+      border-color: var(--muted);
+    }
+    .page-btn:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+    .page-info {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--accent);
+    }
+    .tab-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    /* ── Sub-tabs ── */
+    .work-subtabs {
+      display: none;
+      gap: 0;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .work-subtabs.visible { display: flex; }
+    .tab-connector {
+      width: 1px;
+      height: 1.2rem;
+      background: var(--border);
+      margin-left: 1.8rem;
+      display: none;
+    }
+    .tab-connector.visible { display: block; }
+    .subtab-btn {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .subtab-btn:last-child { border-right: none; }
+    .subtab-btn.active { background: var(--surface); color: var(--accent); }
+    .subtab-btn:hover:not(.active) { background: rgba(255,255,255,0.03); color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .work { padding: 4rem 1.5rem 6rem; }
+      .nav  { padding: 1.2rem 1.5rem; }
+      .lightbox { padding: 1rem; }
+      .lightbox-close { top: 1rem; right: 1rem; }
+      .cv-wrap { margin-bottom: 1.2rem; }
+      .divider { margin-bottom: 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .work-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
-  <div class="grid"></div>
+  <div class="grid-bg"></div>
 
-  <span class="marker marker-tl">Portfolio &#x2F;&#x2F; 2026</span>
-  <span class="marker marker-tr">Design &amp; 3D</span>
-
-  <main class="stage">
-
-    <div class="eyebrow">
-      <span class="eyebrow-dot"></span>
-      Something is being crafted
+  <nav class="nav" id="nav">
+    <span class="nav-logo">RRL</span>
+    <div style="display:flex;gap:2rem;">
+      <a href="#reel" class="nav-link">Reel</a>
+      <a href="#work" class="nav-link">Work</a>
     </div>
+  </nav>
 
-    <h1 class="headline">
-      Coming<br><span>Soon.</span>
-    </h1>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Portfolio // 2026
+      </div>
+      <h1 class="headline">
+        Roberto Rodriguez
+        <span>Lightbourne</span>
+      </h1>
+      <p class="tagline">3D Generalist &amp; Graphic Designer</p>
+      <div class="cv-wrap">
+        <button class="cv-btn" id="cvBtn">Download CV</button>
+        <div class="cv-dropdown" id="cvDropdown">
+          <a class="cv-option" href="images/CV_Roberto_2026_EN.pdf" target="_blank">English</a>
+          <a class="cv-option" href="images/CV_Roberto_2026_SV.pdf" target="_blank">Swedish</a>
+        </div>
+      </div>
+      <div class="divider"></div>
+    </div>
+    <div class="reel-wrap" id="reel">
+      <button class="reel-play" id="reelPlay" aria-label="Play demo reel">
+        <svg class="reel-play-icon" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="34" cy="34" r="33" stroke="rgba(236,236,236,0.18)" stroke-width="1"/>
+          <polygon points="27,20 27,48 50,34" fill="rgba(236,236,236,0.85)"/>
+        </svg>
+        <span class="reel-play-label">Demo Reel</span>
+      </button>
+    </div>
+  </section>
 
-    <div class="divider"></div>
+  <section class="work reveal" id="work">
+    <div class="work-header">
+      <span class="section-label">Selected Work</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="work-tabs">
+      <button class="tab-btn active" data-tab="3d">3D</button>
+      <button class="tab-btn" data-tab="design">Design</button>
+    </div>
+    <div class="tab-connector visible" id="tabConnector"></div>
+    <div class="work-subtabs visible" id="workSubtabs">
+      <button class="subtab-btn active" data-subtab="all">All</button>
+      <button class="subtab-btn" data-subtab="animated">Animated</button>
+      <button class="subtab-btn" data-subtab="still">Still</button>
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+    <div class="work-pagination" id="workPagination" style="display:none;">
+      <button class="page-btn" id="pagePrev" aria-label="Previous page">&#8249;</button>
+      <span class="page-info" id="pageInfo"></span>
+      <button class="page-btn" id="pageNext" aria-label="Next page">&#8250;</button>
+    </div>
+  </section>
 
-    <p class="sub">
-      A new portfolio of graphic design &amp; 3D work is on the way.
-    </p>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous project">&#8249;</button>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next project">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lightboxMedia"></div>
+      <div class="lightbox-info">
+        <span class="lightbox-category" id="lightboxCategory"></span>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+      </div>
+    </div>
+  </div>
 
-  </main>
+  <footer class="footer">© 2026 — Roberto Rodriguez Lightbourne</footer>
 
-  <p class="corner">&#169; 2026 &mdash; All rights reserved</p>
+  <script>
+    // ── All content is loaded from projects.json ─────────────────────────────
 
+    let reelUrl = "";
+    let currentProjects = [];
+    let currentIndex = -1;
+    let activeProjects = [];
+    let currentPage = 0;
 
+    document.getElementById("reelPlay").addEventListener("click", () => {
+      if (!reelUrl) return;
+      currentProjects = [];
+      currentIndex = -1;
+      lbTitle.textContent    = "Demo Reel";
+      lbCategory.textContent = "Roberto Rodriguez Lightbourne";
+      lbMedia.innerHTML      = `<iframe src="${reelUrl}?autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+      updateArrows();
+    });
+
+    // Render cards
+    const grid = document.getElementById("workGrid");
+
+    function renderCards(projects, page = 0) {
+      activeProjects = projects;
+      currentPage    = page;
+      const start     = page * 9;
+      const pageItems = projects.slice(start, start + 9);
+      const total     = Math.ceil(projects.length / 9);
+
+      grid.innerHTML = "";
+      pageItems.forEach((p, i) => {
+        const globalIndex = start + i;
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        const bgImage = p.type === "video" ? p.thumbnail : p.src;
+        card.innerHTML = `
+          <div class="card-bg" style="${bgImage ? `background:url('${bgImage}') center/cover no-repeat;` : `background:linear-gradient(${p.gradient});`}"></div>
+          <div class="card-pattern"></div>
+          <div class="card-overlay"></div>
+          ${p.type === "video" ? `<div class="card-video-tint"></div><div class="card-play"><svg viewBox="0 0 20 20" width="14" height="14"><polygon points="6,4 6,16 16,10" fill="rgba(236,236,236,0.85)"/></svg></div>` : ""}
+          <span class="card-tag">${p.category}</span>
+          <div class="card-info">
+            <div class="card-title">${p.title}</div>
+            <div class="card-sub">${p.category}</div>
+          </div>
+        `;
+        card.addEventListener("click", () => openLightbox(p, globalIndex, projects));
+        card.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") openLightbox(p, globalIndex, projects);
+        });
+        grid.appendChild(card);
+      });
+
+      const pagination = document.getElementById("workPagination");
+      pagination.style.display = total > 1 ? "flex" : "none";
+      document.getElementById("pageInfo").textContent = `${page + 1} / ${total}`;
+      document.getElementById("pagePrev").disabled = page === 0;
+      document.getElementById("pageNext").disabled = page >= total - 1;
+    }
+
+    // Load projects and set up tabs
+    fetch("projects.json")
+      .then(r => r.json())
+      .then(data => {
+        reelUrl = data.reelUrl;
+
+        const threedProjects = data.threed;
+        const designProjects = data.design;
+
+        const subtabs    = document.getElementById("workSubtabs");
+        const connector  = document.getElementById("tabConnector");
+        let activeSubtab = "all";
+
+        function filteredThreed() {
+          if (activeSubtab === "all")      return threedProjects;
+          if (activeSubtab === "still")    return threedProjects.filter(p => p.type === "image");
+          if (activeSubtab === "animated") return threedProjects.filter(p => p.type === "video");
+        }
+
+        document.querySelectorAll(".tab-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            const is3d = btn.dataset.tab === "3d";
+            subtabs.classList.toggle("visible", is3d);
+            connector.classList.toggle("visible", is3d);
+            if (is3d) {
+              activeSubtab = "all";
+              document.querySelectorAll(".subtab-btn").forEach(b => b.classList.toggle("active", b.dataset.subtab === "all"));
+              renderCards(filteredThreed(), 0);
+            } else {
+              renderCards(designProjects, 0);
+            }
+          });
+        });
+
+        document.querySelectorAll(".subtab-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            activeSubtab = btn.dataset.subtab;
+            renderCards(filteredThreed(), 0);
+          });
+        });
+
+        document.getElementById("pagePrev").addEventListener("click", () => renderCards(activeProjects, currentPage - 1));
+        document.getElementById("pageNext").addEventListener("click", () => renderCards(activeProjects, currentPage + 1));
+
+        renderCards(filteredThreed(), 0);
+      });
+
+    // Lightbox
+    const lightbox   = document.getElementById("lightbox");
+    const lbMedia    = document.getElementById("lightboxMedia");
+    const lbTitle    = document.getElementById("lightboxTitle");
+    const lbCategory = document.getElementById("lightboxCategory");
+
+    function openLightbox(p, index, projects) {
+      if (projects !== undefined) {
+        currentProjects = projects;
+        currentIndex    = index;
+      }
+      lbTitle.textContent    = p.title;
+      lbCategory.textContent = p.category;
+      lbMedia.innerHTML      = "";
+      lbMedia.style.background = "";
+
+      if (p.type === "video" && p.embedUrl) {
+        lbMedia.innerHTML = `<iframe src="${p.embedUrl}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+      } else if (p.type === "image" && p.src) {
+        lbMedia.innerHTML = `<img src="${p.src}" alt="${p.title}" />`;
+      } else {
+        lbMedia.style.background = `linear-gradient(${p.gradient})`;
+        lbMedia.innerHTML = `<span style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#333;">Placeholder</span>`;
+      }
+
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+      updateArrows();
+    }
+
+    function navigateLightbox(dir) {
+      if (!currentProjects.length) return;
+      currentIndex = (currentIndex + dir + currentProjects.length) % currentProjects.length;
+      openLightbox(currentProjects[currentIndex]);
+    }
+
+    function updateArrows() {
+      const hidden = currentProjects.length === 0;
+      document.getElementById("lightboxPrev").classList.toggle("hidden", hidden);
+      document.getElementById("lightboxNext").classList.toggle("hidden", hidden);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      setTimeout(() => {
+        lbMedia.innerHTML        = "";
+        lbMedia.style.background = "";
+      }, 300);
+      document.body.style.overflow = "";
+    }
+
+    // CV dropdown
+    const cvBtn      = document.getElementById("cvBtn");
+    const cvDropdown = document.getElementById("cvDropdown");
+    cvBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      cvDropdown.classList.toggle("open");
+    });
+    cvDropdown.querySelectorAll(".cv-option").forEach(a => {
+      a.addEventListener("click", () => cvDropdown.classList.remove("open"));
+    });
+    document.addEventListener("click", () => cvDropdown.classList.remove("open"));
+
+    document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+    document.getElementById("lightboxPrev").addEventListener("click", () => navigateLightbox(-1));
+    document.getElementById("lightboxNext").addEventListener("click", () => navigateLightbox(1));
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", e => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "Escape")      closeLightbox();
+      if (e.key === "ArrowLeft")   navigateLightbox(-1);
+      if (e.key === "ArrowRight")  navigateLightbox(1);
+    });
+
+    // Nav scroll state
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 40);
+    }, { passive: true });
+
+    // Scroll reveal
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
 
 </body>
 </html>

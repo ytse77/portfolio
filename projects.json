@@ -1,0 +1,188 @@
+{
+  "reelUrl": "https://framerate.tv/watch/3524d9d4-ce29-4e4b-8fe7-6d087794ddf0",
+  "threed": [
+    {
+      "title":    "Cabin",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/roberto-rodriguez-cabin-14-v3-credits.jpg",
+      "gradient": "135deg, #1a2a1e, #1e3a2a"
+    },
+    {
+      "title":    "Houdini groom test",
+      "category": "3D",
+      "type":     "video",
+      "embedUrl": "https://framerate.tv/embed/77513217-fc8a-45ac-a460-81fe032fef7f",
+      "thumbnail":"images/thumbnails/ratFurRender.0018.png",
+      "gradient": "135deg, #1a2a1e, #1e3a2a"
+    },
+    {
+      "title":    "Vellum worms",
+      "category": "3D",
+      "type":     "video",
+      "embedUrl": "https://framerate.tv/embed/77513217-fc8a-45ac-a460-81fe032fef7f",
+      "thumbnail":"images/thumbnails/vellum_worms.jpg",
+      "gradient": "135deg, #1a2a1e, #1e3a2a"
+    },
+    {
+      "title":    "Ängsgröna — View 01",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/angsgron_vinkel_01_2880p.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "Ängsgröna — View 05",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/angsgron_vinkel_05_2880p.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+
+    {
+      "title":    "HK Grafurugrått",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/hk_grafurugratt.0003.jpg",
+      "gradient": "135deg, #1e1e20, #28282e"
+    },
+
+    {
+      "title":    "Lantligt — 05",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/lantligt_05.jpg",
+      "gradient": "135deg, #1a2a1e, #1e3a2a"
+    },
+    {
+      "title":    "Penthouse",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/penthouse_04.jpg",
+      "gradient": "135deg, #1e1a2a, #2a1a3a"
+    },
+    {
+      "title":    "Medicvent — Dubbelmask",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/schematisk_bild_dubbelmask_medicvent_apr_2024.jpg",
+      "gradient": "135deg, #1e1e20, #28282e"
+    },
+    {
+      "title":    "Räcke 01",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/racke_01_miljobild_001.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "Räcke 02",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/racke_02_miljobild_005.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+
+
+    {
+      "title":    "T-Korsning Stege",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/T-korsning_stege_aug_2023.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "Vesivek — Fasadstege",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/vesivek_fasadstege_dec_2023_01.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "Vesivek — Snörasskydd",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/vesivek_snorasskydd_dec_2023_01.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "Vesivek — Takstege",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/vesivek_takstege_dec_2023_HI_01.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    }
+  ],
+  "design": [
+    {
+      "title":    "BCR",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/BCR_logo_RGB_liggande_600px.jpg",
+      "gradient": "135deg, #1e1a2e, #2e1e3a"
+    },
+    {
+      "title":    "Digipartner",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/Digipartner_Logo_black_800px.jpg",
+      "gradient": "135deg, #1a1e1e, #1a2e2e"
+    },
+    {
+      "title":    "Nalta Digital",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/DIGITAL_logotyp_Nalta_RGB.jpg",
+      "gradient": "135deg, #181e2a, #1e2840"
+    },
+    {
+      "title":    "Bullens",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/logo_Bullens_RGB.jpg",
+      "gradient": "135deg, #2a1a1a, #3a1e1e"
+    },
+    {
+      "title":    "Byggproffs",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/logo_Byggproffs_stående_500px.jpg",
+      "gradient": "135deg, #241e18, #3a2a1a"
+    },
+    {
+      "title":    "Reliningsbolaget",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/logo_reliningsbolaget_staende_RGB_600px.jpg",
+      "gradient": "135deg, #1e1a2e, #2e1e3a"
+    },
+    {
+      "title":    "UHT",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/logo_uht_RGB_1920px.jpg",
+      "gradient": "135deg, #1a1e1e, #1a2e2e"
+    },
+    {
+      "title":    "Qvisto",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/qvisto_logo_600px.jpg",
+      "gradient": "135deg, #181e2a, #1e2840"
+    },
+    {
+      "title":    "Talko",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/talko_LAPP_RGB_800px.jpg",
+      "gradient": "135deg, #2a1a1a, #3a1e1e"
+    },
+    {
+      "title":    "VR",
+      "category": "Brand Identity",
+      "type":     "image",
+      "src":      "images/design/VR_logotyp__liggande_800px_RGB.jpg",
+      "gradient": "135deg, #241e18, #3a2a1a"
+    }
+  ]
+}

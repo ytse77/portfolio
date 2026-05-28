@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #1a1a1a; }
 
     :root {
       --bg:      #1a1a1a;
@@ -86,12 +87,12 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 2.5rem;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid transparent;
-      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      transition: border-color 0.4s;
     }
     .nav.scrolled {
-      background: rgba(26,26,26,0.85);
-      backdrop-filter: blur(16px);
       border-bottom-color: var(--border);
     }
     .nav-logo {
@@ -691,7 +692,7 @@
     @media (max-width: 768px) {
       .hero { padding: 7rem 1.5rem 4rem; }
       .work { padding: 4rem 1.5rem 6rem; }
-      .nav  { padding: 1.2rem 1.5rem; }
+      .nav  { padding: 1.2rem 1.5rem; background: rgba(26,26,26,0.95); backdrop-filter: blur(16px); border-bottom-color: var(--border); }
       .lightbox { padding: 1rem; }
       .lightbox-close { top: 1rem; right: 1rem; }
       .cv-wrap { margin-bottom: 1.2rem; }

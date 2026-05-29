@@ -1,5 +1,5 @@
 {
-  "reelUrl": "https://framerate.tv/watch/3524d9d4-ce29-4e4b-8fe7-6d087794ddf0",
+  "reelUrl": "https://framerate.tv/embed/3524d9d4-ce29-4e4b-8fe7-6d087794ddf0",
   "threed": [
     {
       "title":    "Cabin",
@@ -20,7 +20,7 @@
       "title":    "Vellum worms",
       "category": "3D / Video",
       "type":     "video",
-      "embedUrl": "https://framerate.tv/watch/e75ba776-30e3-4c11-bd1b-fabf4714ac3b",
+      "embedUrl": "https://framerate.tv/embed/e75ba776-30e3-4c11-bd1b-fabf4714ac3b",
       "thumbnail":"images/thumbnails/vellum_worms.jpg",
       "gradient": "135deg, #1a2a1e, #1e3a2a"
     },
@@ -42,7 +42,7 @@
       "title":    "Strawberry drop Houdini",
       "category": "3D / Video",
       "type":     "video",
-      "embedUrl": "https://framerate.tv/watch/8d85a379-55fb-45c5-94fd-8106a3a1f3f5",
+      "embedUrl": "https://framerate.tv/embed/8d85a379-55fb-45c5-94fd-8106a3a1f3f5",
       "thumbnail":"images/thumbnails/strawberryDrop_v002-0001.jpg",
       "gradient": "135deg, #1a2a1e, #1e3a2a"
     },

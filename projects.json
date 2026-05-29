@@ -38,7 +38,28 @@
       "src":      "images/3d/angsgron_vinkel_05_2880p.jpg",
       "gradient": "135deg, #1a1e2a, #1a2640"
     },
-
+    {
+      "title":    "Strawberry drop Houdini",
+      "category": "3D / Video",
+      "type":     "video",
+      "embedUrl": "https://framerate.tv/watch/8d85a379-55fb-45c5-94fd-8106a3a1f3f5",
+      "thumbnail":"images/thumbnails/strawberryDrop_v002-0001.jpg",
+      "gradient": "135deg, #1a2a1e, #1e3a2a"
+    },
+    {
+      "title":    "X-Line - X-RAIL Tree",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/XRAIL-tree_sunset_webb_01.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
+    {
+      "title":    "X-Line - X-RAIL Tree",
+      "category": "3D",
+      "type":     "image",
+      "src":      "images/3d/XRAIL-tree_daylight_webb_02.jpg",
+      "gradient": "135deg, #1a1e2a, #1a2640"
+    },
     {
       "title":    "HK Grafurugrått",
       "category": "3D",
@@ -75,22 +96,7 @@
       "src":      "images/3d/racke_01_miljobild_001.jpg",
       "gradient": "135deg, #1a1e2a, #1a2640"
     },
-    {
-      "title":    "Räcke 02",
-      "category": "3D",
-      "type":     "image",
-      "src":      "images/3d/racke_02_miljobild_005.jpg",
-      "gradient": "135deg, #1a1e2a, #1a2640"
-    },
 
-
-    {
-      "title":    "T-Korsning Stege",
-      "category": "3D",
-      "type":     "image",
-      "src":      "images/3d/T-korsning_stege_aug_2023.jpg",
-      "gradient": "135deg, #1a1e2a, #1a2640"
-    },
     {
       "title":    "Vesivek — Fasadstege",
       "category": "3D",

@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: #1a1a1a; }
+    html { background: var(--bg); }
 
     :root {
       --bg:      #1a1a1a;
@@ -17,6 +17,17 @@
       --text:    #ececec;
       --muted:   #737373;
       --accent:  #e8e8e8;
+      --nav-bg:  rgba(26,26,26,0.95);
+    }
+
+    html[data-theme="light"] {
+      --bg:      #f0f0f0;
+      --surface: #ffffff;
+      --border:  #d8d8d8;
+      --text:    #1a1a1a;
+      --muted:   #888888;
+      --accent:  #1a1a1a;
+      --nav-bg:  rgba(240,240,240,0.95);
     }
 
     html { scroll-behavior: smooth; }
@@ -87,10 +98,10 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 2.5rem;
-      background: rgba(26,26,26,0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid transparent;
-      transition: border-color 0.4s;
+      transition: border-color 0.4s, background 0.3s;
     }
     .nav.scrolled {
       border-bottom-color: var(--border);
@@ -110,6 +121,18 @@
       transition: color 0.2s;
     }
     .nav-link:hover { color: var(--text); }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .theme-toggle:hover { color: var(--text); }
 
     /* ── Hero ── */
     .hero {
@@ -131,17 +154,10 @@
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
       color: var(--muted);
       font-size: 0.65rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 999px;
       margin-bottom: 2rem;
       opacity: 0;
       transform: translateY(12px);
@@ -277,6 +293,12 @@
     }
     .reel-play:hover {
       background: radial-gradient(ellipse 60% 60% at 50% 50%, #2c2c2c 0%, #222 100%);
+    }
+    html[data-theme="light"] .reel-play {
+      background: var(--surface);
+    }
+    html[data-theme="light"] .reel-play:hover {
+      background: var(--border);
     }
     .reel-play-icon {
       width: 68px;
@@ -692,7 +714,7 @@
     @media (max-width: 768px) {
       .hero { padding: 7rem 1.5rem 4rem; }
       .work { padding: 4rem 1.5rem 6rem; }
-      .nav  { padding: 1.2rem 1.5rem; background: rgba(26,26,26,0.95); backdrop-filter: blur(16px); border-bottom-color: var(--border); }
+      .nav  { padding: 1.2rem 1.5rem; }
       .lightbox { padding: 1rem; }
       .lightbox-close { top: 1rem; right: 1rem; }
       .cv-wrap { margin-bottom: 1.2rem; }
@@ -711,18 +733,16 @@
 
   <nav class="nav" id="nav">
     <span class="nav-logo">RRL</span>
-    <div style="display:flex;gap:2rem;">
+    <div style="display:flex;gap:2rem;align-items:center;">
       <a href="#reel" class="nav-link">Reel</a>
       <a href="#work" class="nav-link">Work</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
     </div>
   </nav>
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">
-        <span class="eyebrow-dot"></span>
-        Portfolio // 2026
-      </div>
+      <div class="eyebrow">Portfolio // 2026</div>
       <h1 class="headline">
         Roberto Rodriguez
         <span>Lightbourne</span>
@@ -787,6 +807,23 @@
   <footer class="footer">© 2026 — Roberto Rodriguez Lightbourne</footer>
 
   <script>
+    // ── Theme toggle ─────────────────────────────────────────────────────────
+    const moonSVG = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    const sunSVG  = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('themeToggle').innerHTML = theme === 'dark' ? moonSVG : sunSVG;
+      localStorage.setItem('theme', theme);
+    }
+
+    applyTheme(localStorage.getItem('theme') || 'dark');
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
     // ── All content is loaded from projects.json ─────────────────────────────
 
     let reelUrl = "";

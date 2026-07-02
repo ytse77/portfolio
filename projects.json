@@ -7,7 +7,7 @@
       "type": "video",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
       "embedUrl": "https://framerate.tv/embed/e75ba776-30e3-4c11-bd1b-fabf4714ac3b",
-      "thumbnail": "images/thumbnails/vellum_worms.jpg"
+      "thumb": "images/thumbs/vellum_worms.webp"
     },
     {
       "title": "Houdini groom test",
@@ -15,28 +15,31 @@
       "type": "video",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
       "embedUrl": "https://framerate.tv/embed/77513217-fc8a-45ac-a460-81fe032fef7f",
-      "thumbnail": "images/thumbnails/ratFurRender.0018.png"
+      "thumb": "images/thumbs/ratFurRender.0018.webp"
     },
     {
       "title": "Ängsgröna — View 01",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/angsgron_vinkel_01_2880p.jpg"
+      "src": "images/web/angsgron_vinkel_01_2880p.webp",
+      "thumb": "images/thumbs/angsgron_vinkel_01_2880p.webp"
     },
     {
       "title": "Ängsgröna — View 05",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/angsgron_vinkel_05_2880p.jpg"
+      "src": "images/web/angsgron_vinkel_05_2880p.webp",
+      "thumb": "images/thumbs/angsgron_vinkel_05_2880p.webp"
     },
     {
       "title": "Cabin",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
-      "src": "images/3d/roberto-rodriguez-cabin-14-v3-credits.jpg"
+      "src": "images/web/roberto-rodriguez-cabin-14-v3-credits.webp",
+      "thumb": "images/thumbs/roberto-rodriguez-cabin-14-v3-credits.webp"
     },
     {
       "title": "Strawberry drop Houdini",
@@ -44,77 +47,87 @@
       "type": "video",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
       "embedUrl": "https://framerate.tv/embed/8d85a379-55fb-45c5-94fd-8106a3a1f3f5",
-      "thumbnail": "images/thumbnails/strawberryDrop_v002-0001.jpg"
+      "thumb": "images/thumbs/strawberryDrop_v002-0001.webp"
     },
     {
-      "title": "X-Line - X-RAIL Tree",
+      "title": "X-Line — X-RAIL Tree (Sunset)",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/XRAIL-tree_sunset_webb_01.jpg"
+      "src": "images/web/XRAIL-tree_sunset_webb_01.webp",
+      "thumb": "images/thumbs/XRAIL-tree_sunset_webb_01.webp"
     },
     {
-      "title": "X-Line - X-RAIL Tree",
+      "title": "X-Line — X-RAIL Tree (Daylight)",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/XRAIL-tree_daylight_webb_02.jpg"
+      "src": "images/web/XRAIL-tree_daylight_webb_02.webp",
+      "thumb": "images/thumbs/XRAIL-tree_daylight_webb_02.webp"
     },
     {
       "title": "HK Grafurugrått",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1e1e20, #28282e",
-      "src": "images/3d/hk_grafurugratt.0003.jpg"
+      "src": "images/web/hk_grafurugratt.0003.webp",
+      "thumb": "images/thumbs/hk_grafurugratt.0003.webp"
     },
     {
       "title": "Lantligt — 05",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
-      "src": "images/3d/lantligt_05.jpg"
+      "src": "images/web/lantligt_05.webp",
+      "thumb": "images/thumbs/lantligt_05.webp"
     },
     {
       "title": "Penthouse",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1e1a2a, #2a1a3a",
-      "src": "images/3d/penthouse_04.jpg"
+      "src": "images/web/penthouse_04.webp",
+      "thumb": "images/thumbs/penthouse_04.webp"
     },
     {
       "title": "Medicvent — Dubbelmask",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1e1e20, #28282e",
-      "src": "images/3d/schematisk_bild_dubbelmask_medicvent_apr_2024.jpg"
+      "src": "images/web/schematisk_bild_dubbelmask_medicvent_apr_2024.webp",
+      "thumb": "images/thumbs/schematisk_bild_dubbelmask_medicvent_apr_2024.webp"
     },
     {
       "title": "Räcke 01",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/racke_01_miljobild_001.jpg"
+      "src": "images/web/racke_01_miljobild_001.webp",
+      "thumb": "images/thumbs/racke_01_miljobild_001.webp"
     },
     {
       "title": "Vesivek — Fasadstege",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/vesivek_fasadstege_dec_2023_01.jpg"
+      "src": "images/web/vesivek_fasadstege_dec_2023_01.webp",
+      "thumb": "images/thumbs/vesivek_fasadstege_dec_2023_01.webp"
     },
     {
       "title": "Vesivek — Snörasskydd",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/vesivek_snorasskydd_dec_2023_01.jpg"
+      "src": "images/web/vesivek_snorasskydd_dec_2023_01.webp",
+      "thumb": "images/thumbs/vesivek_snorasskydd_dec_2023_01.webp"
     },
     {
       "title": "Vesivek — Takstege",
       "category": "3D",
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/3d/vesivek_takstege_dec_2023_HI_01.jpg"
+      "src": "images/web/vesivek_takstege_dec_2023_HI_01.webp",
+      "thumb": "images/thumbs/vesivek_takstege_dec_2023_HI_01.webp"
     }
   ],
   "design": [
@@ -122,6 +135,7 @@
       "title": "BCR",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #1e1a2e, #2e1e3a",
       "src": "images/design/BCR_logo_RGB_liggande_600px.jpg"
     },
@@ -129,6 +143,7 @@
       "title": "Digipartner",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #1a1e1e, #1a2e2e",
       "src": "images/design/Digipartner_Logo_black_800px.jpg"
     },
@@ -136,6 +151,7 @@
       "title": "Nalta Digital",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #181e2a, #1e2840",
       "src": "images/design/DIGITAL_logotyp_Nalta_RGB.jpg"
     },
@@ -143,6 +159,7 @@
       "title": "Bullens",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #2a1a1a, #3a1e1e",
       "src": "images/design/logo_Bullens_RGB.jpg"
     },
@@ -150,6 +167,7 @@
       "title": "Byggproffs",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #241e18, #3a2a1a",
       "src": "images/design/logo_Byggproffs_stående_500px.jpg"
     },
@@ -157,6 +175,7 @@
       "title": "Reliningsbolaget",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #1e1a2e, #2e1e3a",
       "src": "images/design/logo_reliningsbolaget_staende_RGB_600px.jpg"
     },
@@ -164,6 +183,7 @@
       "title": "UHT",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #1a1e1e, #1a2e2e",
       "src": "images/design/logo_uht_RGB_1920px.jpg"
     },
@@ -171,6 +191,7 @@
       "title": "Qvisto",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #181e2a, #1e2840",
       "src": "images/design/qvisto_logo_600px.jpg"
     },
@@ -178,6 +199,7 @@
       "title": "Talko",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #2a1a1a, #3a1e1e",
       "src": "images/design/talko_LAPP_RGB_800px.jpg"
     },
@@ -185,6 +207,7 @@
       "title": "VR",
       "category": "Brand Identity",
       "type": "image",
+      "fit": "contain",
       "gradient": "135deg, #241e18, #3a2a1a",
       "src": "images/design/VR_logotyp__liggande_800px_RGB.jpg"
     }

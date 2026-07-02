@@ -13,6 +13,21 @@
   </script>
   <title>Roberto Rodriguez Lightbourne — 3D & Design</title>
   <meta name="description" content="Portfolio of Roberto Rodriguez Lightbourne — 3D Generalist & Graphic Designer" />
+  <link rel="canonical" href="https://lightbourne.se/" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lightbourne.se/" />
+  <meta property="og:title" content="Roberto Rodriguez Lightbourne — 3D & Design" />
+  <meta property="og:description" content="Portfolio of Roberto Rodriguez Lightbourne — 3D Generalist & Graphic Designer" />
+  <meta property="og:image" content="https://lightbourne.se/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roberto Rodriguez Lightbourne — 3D & Design" />
+  <meta name="twitter:description" content="Portfolio of Roberto Rodriguez Lightbourne — 3D Generalist & Graphic Designer" />
+  <meta name="twitter:image" content="https://lightbourne.se/images/og-image.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,6 +41,8 @@
       --muted:   #737373;
       --accent:  #e8e8e8;
       --nav-bg:  rgba(26,26,26,0.95);
+      --chip-bg:     rgba(26,26,26,0.75);
+      --chip-border: rgba(46,46,46,0.8);
     }
 
     html[data-theme="light"] {
@@ -36,6 +53,8 @@
       --muted:   #888888;
       --accent:  #1a1a1a;
       --nav-bg:  rgba(240,240,240,0.95);
+      --chip-bg:     rgba(240,240,240,0.85);
+      --chip-border: rgba(216,216,216,0.9);
     }
 
     html { scroll-behavior: smooth; }
@@ -147,6 +166,7 @@
       position: relative;
       z-index: 10;
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -204,6 +224,19 @@
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .about {
+      max-width: 560px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s ease forwards 0.65s;
     }
 
     .cv-wrap {
@@ -374,6 +407,20 @@
       inset: 0;
       transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+    .card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card:hover .card-img { transform: scale(1.05); }
+    .card--contain .card-img {
+      object-fit: contain;
+      padding: 2rem;
+      background: #fff;
+    }
     .card-pattern {
       position: absolute;
       inset: 0;
@@ -427,8 +474,8 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
-      border: 1px solid rgba(46,46,46,0.8);
-      background: rgba(26,26,26,0.75);
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
       padding: 4px 10px;
       border-radius: 999px;
       backdrop-filter: blur(6px);
@@ -496,7 +543,7 @@
     .lightbox-close:hover {
       color: var(--text);
       border-color: var(--muted);
-      background: #2a2a2a;
+      background: var(--border);
     }
 
     .lightbox-arrow {
@@ -520,7 +567,7 @@
     .lightbox-arrow:hover {
       color: var(--text);
       border-color: var(--muted);
-      background: #2a2a2a;
+      background: var(--border);
     }
     .lightbox-prev { left: 1.2rem; }
     .lightbox-next { right: 1.2rem; }
@@ -556,6 +603,8 @@
       height: 100%;
       object-fit: contain;
     }
+    .lightbox-media.contain { background: #fff; }
+    .lightbox-media.contain img { padding: 2.5rem; }
 
     .lightbox-info {
       display: flex;
@@ -574,6 +623,50 @@
       color: var(--accent);
       font-weight: 600;
     }
+    .lightbox-desc {
+      font-size: 0.75rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .lightbox-desc:empty { display: none; }
+
+    /* ── Contact ── */
+    .contact {
+      position: relative;
+      z-index: 10;
+      padding: 0 2.5rem 7rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-lede {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 1.8rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      padding: 12px 20px;
+      border-radius: 999px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover { color: var(--text); border-color: var(--muted); }
+    .contact-link svg { flex-shrink: 0; }
 
     /* ── Footer ── */
     .footer {
@@ -633,42 +726,6 @@
     }
     .tab-btn:last-child { border-right: none; }
 
-    /* ── Pagination ── */
-    .work-pagination {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .page-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.4rem;
-      font-family: 'Sora', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .page-btn:hover:not(:disabled) {
-      color: var(--text);
-      border-color: var(--muted);
-    }
-    .page-btn:disabled {
-      opacity: 0.25;
-      cursor: default;
-    }
-    .page-info {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
     .tab-btn.active {
       background: var(--surface);
       color: var(--accent);
@@ -715,6 +772,25 @@
     .subtab-btn.active { background: var(--surface); color: var(--accent); }
     .subtab-btn:hover:not(.active) { background: rgba(255,255,255,0.03); color: var(--text); }
 
+    /* ── Touch devices: card info always visible ── */
+    @media (hover: none) {
+      .card-overlay { opacity: 1; }
+      .card-info { opacity: 1; transform: none; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .orb { animation: none; }
+      .eyebrow, .headline, .tagline, .about, .cv-wrap, .divider, .reel-wrap {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .eyebrow-dot { animation: none; }
+      .reveal { transition: none; opacity: 1; transform: none; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .work-grid { grid-template-columns: repeat(2, 1fr); }
@@ -722,6 +798,7 @@
     @media (max-width: 768px) {
       .hero { padding: 7rem 1.5rem 4rem; }
       .work { padding: 4rem 1.5rem 6rem; }
+      .contact { padding: 0 1.5rem 5rem; }
       .nav  { padding: 1.2rem 1.5rem; }
       .lightbox { padding: 1rem; }
       .lightbox-close { top: 1rem; right: 1rem; }
@@ -744,6 +821,7 @@
     <div style="display:flex;gap:2rem;align-items:center;">
       <a href="#reel" class="nav-link">Reel</a>
       <a href="#work" class="nav-link">Work</a>
+      <a href="#contact" class="nav-link">Contact</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
     </div>
   </nav>
@@ -756,6 +834,7 @@
         <span>Lightbourne</span>
       </h1>
       <p class="tagline">3D Generalist &amp; Graphic Designer</p>
+      <p class="about">Based in Sweden, I create product visualization, 3D animation and brand identities — working in Houdini, Maya and the Adobe Creative Suite.</p>
       <div class="cv-wrap">
         <button class="cv-btn" id="cvBtn">Download CV</button>
         <div class="cv-dropdown" id="cvDropdown">
@@ -792,10 +871,23 @@
       <button class="subtab-btn" data-subtab="still">Still</button>
     </div>
     <div class="work-grid" id="workGrid"></div>
-    <div class="work-pagination" id="workPagination" style="display:none;">
-      <button class="page-btn" id="pagePrev" aria-label="Previous page">&#8249;</button>
-      <span class="page-info" id="pageInfo"></span>
-      <button class="page-btn" id="pageNext" aria-label="Next page">&#8250;</button>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <div class="work-header">
+      <span class="section-label">Contact</span>
+      <div class="section-line"></div>
+    </div>
+    <p class="contact-lede">Interested in working together? Get in touch.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:robert77@gmail.com">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        robert77@gmail.com
+      </a>
+      <a class="contact-link" href="https://www.instagram.com/ytse77_3d" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        @ytse77_3d
+      </a>
     </div>
   </section>
 
@@ -808,6 +900,7 @@
       <div class="lightbox-info">
         <span class="lightbox-category" id="lightboxCategory"></span>
         <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
       </div>
     </div>
   </div>
@@ -825,7 +918,8 @@
       localStorage.setItem('theme', theme);
     }
 
-    applyTheme(localStorage.getItem('theme') || 'dark');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    applyTheme(localStorage.getItem('theme') || (prefersLight ? 'light' : 'dark'));
 
     document.getElementById('themeToggle').addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
@@ -837,8 +931,6 @@
     let reelUrl = "";
     let currentProjects = [];
     let currentIndex = -1;
-    let activeProjects = [];
-    let currentPage = 0;
 
     document.getElementById("reelPlay").addEventListener("click", () => {
       if (!reelUrl) return;
@@ -846,6 +938,8 @@
       currentIndex = -1;
       lbTitle.textContent    = "Demo Reel";
       lbCategory.textContent = "Roberto Rodriguez Lightbourne";
+      lbDesc.textContent     = "";
+      lbMedia.classList.remove("contain");
       lbMedia.innerHTML      = `<iframe src="${reelUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
@@ -855,23 +949,20 @@
     // Render cards
     const grid = document.getElementById("workGrid");
 
-    function renderCards(projects, page = 0) {
-      activeProjects = projects;
-      currentPage    = page;
-      const start     = page * 9;
-      const pageItems = projects.slice(start, start + 9);
-      const total     = Math.ceil(projects.length / 9);
-
+    function renderCards(projects) {
       grid.innerHTML = "";
-      pageItems.forEach((p, i) => {
-        const globalIndex = start + i;
+      projects.forEach((p, i) => {
         const card = document.createElement("div");
         card.className = "card";
+        if (p.fit === "contain") card.classList.add("card--contain");
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
-        const bgImage = p.type === "video" ? p.thumbnail : p.src;
+        card.setAttribute("aria-label", p.title);
+        const thumb = p.thumb || (p.type === "video" ? p.thumbnail : p.src);
         card.innerHTML = `
-          <div class="card-bg" style="${bgImage ? `background:url('${bgImage}') center/cover no-repeat;` : `background:linear-gradient(${p.gradient});`}"></div>
+          ${thumb
+            ? `<img class="card-img" src="${thumb}" alt="${p.title}" loading="lazy" decoding="async" />`
+            : `<div class="card-bg" style="background:linear-gradient(${p.gradient});"></div>`}
           <div class="card-pattern"></div>
           <div class="card-overlay"></div>
           ${p.type === "video" ? `<div class="card-video-tint"></div><div class="card-play"><svg viewBox="0 0 20 20" width="14" height="14"><polygon points="6,4 6,16 16,10" fill="rgba(236,236,236,0.85)"/></svg></div>` : ""}
@@ -881,18 +972,12 @@
             <div class="card-sub">${p.category}</div>
           </div>
         `;
-        card.addEventListener("click", () => openLightbox(p, globalIndex, projects));
+        card.addEventListener("click", () => openLightbox(p, i, projects));
         card.addEventListener("keydown", e => {
-          if (e.key === "Enter" || e.key === " ") openLightbox(p, globalIndex, projects);
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(p, i, projects); }
         });
         grid.appendChild(card);
       });
-
-      const pagination = document.getElementById("workPagination");
-      pagination.style.display = total > 1 ? "flex" : "none";
-      document.getElementById("pageInfo").textContent = `${page + 1} / ${total}`;
-      document.getElementById("pagePrev").disabled = page === 0;
-      document.getElementById("pageNext").disabled = page >= total - 1;
     }
 
     // Load projects and set up tabs
@@ -924,9 +1009,9 @@
             if (is3d) {
               activeSubtab = "all";
               document.querySelectorAll(".subtab-btn").forEach(b => b.classList.toggle("active", b.dataset.subtab === "all"));
-              renderCards(filteredThreed(), 0);
+              renderCards(filteredThreed());
             } else {
-              renderCards(designProjects, 0);
+              renderCards(designProjects);
             }
           });
         });
@@ -936,14 +1021,14 @@
             document.querySelectorAll(".subtab-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             activeSubtab = btn.dataset.subtab;
-            renderCards(filteredThreed(), 0);
+            renderCards(filteredThreed());
           });
         });
 
-        document.getElementById("pagePrev").addEventListener("click", () => renderCards(activeProjects, currentPage - 1));
-        document.getElementById("pageNext").addEventListener("click", () => renderCards(activeProjects, currentPage + 1));
-
-        renderCards(filteredThreed(), 0);
+        renderCards(filteredThreed());
+      })
+      .catch(() => {
+        grid.innerHTML = `<div style="grid-column:1/-1;padding:3rem;text-align:center;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);">Unable to load projects — please refresh the page.</div>`;
       });
 
     // Lightbox
@@ -951,6 +1036,7 @@
     const lbMedia    = document.getElementById("lightboxMedia");
     const lbTitle    = document.getElementById("lightboxTitle");
     const lbCategory = document.getElementById("lightboxCategory");
+    const lbDesc     = document.getElementById("lightboxDesc");
 
     function openLightbox(p, index, projects) {
       if (projects !== undefined) {
@@ -959,6 +1045,8 @@
       }
       lbTitle.textContent    = p.title;
       lbCategory.textContent = p.category;
+      lbDesc.textContent     = p.description || "";
+      lbMedia.classList.toggle("contain", p.fit === "contain");
       lbMedia.innerHTML      = "";
       lbMedia.style.background = "";
 

@@ -57,3 +57,18 @@ Tab buttons are defined in HTML around line 555. The button with `class="tab-btn
 ### Design tokens
 
 All colors are CSS custom properties on `:root` (lines 12–19): `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`.
+
+## Local admin tool (admin.html)
+
+`admin.html` in the repo root is a self-contained browser GUI for content updates. It is **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (it won't arrive via `git clone`).
+
+What it does, entirely client-side (no server, no GitHub API, no credentials):
+
+- Loads `projects.json` (via fetch when served over http, or a file picker when opened as `file://`)
+- Shows all projects as a visual card grid — **drag cards to reorder**, click a card to open an editor modal for title, category, description, and embed URL (plus move/delete)
+- Adding a project: drop an image on the page and it generates the WebP derivatives in-browser via Canvas (800px thumb + 1920px lightbox version for 3D stills; thumb only for videos; design logos pass through untouched with `fit: "contain"`)
+- Exports either `projects.json` alone (for reorder/text-only changes) or `portfolio-update.zip` containing the JSON plus all new images already in repo folder structure (`images/thumbs/`, `images/web/`, `images/3d/` …)
+
+Publishing is deliberately manual: extract the ZIP over the repo root (or replace `projects.json`), then commit and push. Do not add token-based auto-publishing — Roberto explicitly wants the download-and-push-manually workflow.
+
+Caveats: requires a WebP-capable browser (Chrome/Edge/Firefox — not Safari; the page detects and warns). Canvas encoding is marginally simpler than the ImageMagick pipeline above; use `magick` when maximum quality matters.

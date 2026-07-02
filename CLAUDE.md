@@ -58,6 +58,10 @@ Tab buttons are defined in HTML around line 555. The button with `class="tab-btn
 
 All colors are CSS custom properties on `:root` (lines 12–19): `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`.
 
+## Analytics
+
+GoatCounter (cookieless, no consent banner needed) — script tag at the bottom of `index.html`, site code `ytse77`, dashboard at https://ytse77.goatcounter.com. Google Analytics was removed in July 2026; do not re-add it without a consent banner.
+
 ## Local admin tool (admin.html)
 
 `admin.html` in the repo root is a self-contained browser GUI for content updates. It is **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (it won't arrive via `git clone`).

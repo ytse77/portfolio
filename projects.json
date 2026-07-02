@@ -7,7 +7,8 @@
       "type": "video",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
       "embedUrl": "https://framerate.tv/embed/e75ba776-30e3-4c11-bd1b-fabf4714ac3b",
-      "thumb": "images/thumbs/vellum_worms.webp"
+      "thumb": "images/thumbs/vellum_worms.webp",
+      "description": "Houdini, Redshift, vellum, ripple solver"
     },
     {
       "title": "Houdini groom test",
@@ -15,7 +16,8 @@
       "type": "video",
       "gradient": "135deg, #1a2a1e, #1e3a2a",
       "embedUrl": "https://framerate.tv/embed/77513217-fc8a-45ac-a460-81fe032fef7f",
-      "thumb": "images/thumbs/ratFurRender.0018.webp"
+      "thumb": "images/thumbs/ratFurRender.0018.webp",
+      "description": "Houdini, Karma XPU"
     },
     {
       "title": "Ängsgröna — View 01",
@@ -23,7 +25,8 @@
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
       "src": "images/web/angsgron_vinkel_01_2880p.webp",
-      "thumb": "images/thumbs/angsgron_vinkel_01_2880p.webp"
+      "thumb": "images/thumbs/angsgron_vinkel_01_2880p.webp",
+      "description": "Client: HärjedalsKök - Maya + Arnold"
     },
     {
       "title": "Ängsgröna — View 05",
@@ -31,15 +34,8 @@
       "type": "image",
       "gradient": "135deg, #1a1e2a, #1a2640",
       "src": "images/web/angsgron_vinkel_05_2880p.webp",
-      "thumb": "images/thumbs/angsgron_vinkel_05_2880p.webp"
-    },
-    {
-      "title": "Cabin",
-      "category": "3D",
-      "type": "image",
-      "gradient": "135deg, #1a2a1e, #1e3a2a",
-      "src": "images/web/roberto-rodriguez-cabin-14-v3-credits.webp",
-      "thumb": "images/thumbs/roberto-rodriguez-cabin-14-v3-credits.webp"
+      "thumb": "images/thumbs/angsgron_vinkel_05_2880p.webp",
+      "description": "Client: HärjedalsKök - Maya + Arnold"
     },
     {
       "title": "Strawberry drop Houdini",
@@ -56,6 +52,15 @@
       "gradient": "135deg, #1a1e2a, #1a2640",
       "src": "images/web/XRAIL-tree_sunset_webb_01.webp",
       "thumb": "images/thumbs/XRAIL-tree_sunset_webb_01.webp"
+    },
+    {
+      "title": "Cabin",
+      "category": "3D",
+      "type": "image",
+      "gradient": "135deg, #1a2a1e, #1e3a2a",
+      "src": "images/web/roberto-rodriguez-cabin-14-v3-credits.webp",
+      "thumb": "images/thumbs/roberto-rodriguez-cabin-14-v3-credits.webp",
+      "description": "Finalist entry for the Renderman Rustic Cabin challenge. Maya + Renderman"
     },
     {
       "title": "X-Line — X-RAIL Tree (Daylight)",

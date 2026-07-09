@@ -872,9 +872,9 @@
     </div>
     <p class="contact-lede">Interested in working together? Get in touch.</p>
     <div class="contact-links">
-      <a class="contact-link" href="mailto:robert77@gmail.com">
+      <a class="contact-link" id="contactMail" href="#">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        robert77@gmail.com
+        <span>email me</span>
       </a>
       <a class="contact-link" href="https://www.instagram.com/ytse77_3d" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
@@ -1099,6 +1099,16 @@
       if (e.key === "ArrowLeft")   navigateLightbox(-1);
       if (e.key === "ArrowRight")  navigateLightbox(1);
     });
+
+    // Contact email — assembled at runtime so the address never appears in the
+    // HTML source (defeats plain-text scrapers). Parts are stored reversed.
+    (() => {
+      const rev = s => s.split("").reverse().join("");
+      const addr = rev("77trebor") + String.fromCharCode(64) + rev("liamg") + "." + rev("moc");
+      const link = document.getElementById("contactMail");
+      link.href = "mailto:" + addr;
+      link.querySelector("span").textContent = addr;
+    })();
 
     // Nav scroll state
     const nav = document.getElementById("nav");

@@ -58,6 +58,10 @@ Tab buttons are defined in HTML around line 555. The button with `class="tab-btn
 
 All colors are CSS custom properties on `:root` (lines 12–19): `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`.
 
+## Contact email
+
+The contact email in the Contact section is deliberately NOT in the HTML source — it is assembled at runtime by JS (reversed string parts) to defeat spam scrapers. Never put the plain address back into the markup.
+
 ## Analytics
 
 GoatCounter (cookieless, no consent banner needed) — script tag at the bottom of `index.html`, site code `ytse77`, dashboard at https://ytse77.goatcounter.com. Google Analytics was removed in July 2026; do not re-add it without a consent banner.

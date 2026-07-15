@@ -38,6 +38,24 @@
       "description": "Client: HärjedalsKök - Maya + Arnold"
     },
     {
+      "title": "Visit Umeå - Evenemangskompis",
+      "category": "3D / Video",
+      "type": "video",
+      "gradient": "135deg, #1a2a1e, #1e3a2a",
+      "embedUrl": "https://framerate.tv/embed/70e98382-87e5-4142-b15b-a64d2439ed33",
+      "thumb": "images/thumbs/evenemangskompis.webp",
+      "description": "Visit Umeå - Maya, Redshift. https://evenemangskompis.visitumea.se/"
+    },
+    {
+      "title": "KeepGum - smaker",
+      "category": "3D / Video",
+      "type": "video",
+      "gradient": "135deg, #1e1e20, #28282e",
+      "embedUrl": "https://framerate.tv/embed/78cde41a-2f87-48dc-a528-1afb5e49b533",
+      "thumb": "images/thumbs/keepgum.webp",
+      "description": "KeepGum - Maya, Redshift"
+    },
+    {
       "title": "Strawberry drop Houdini",
       "category": "3D / Video",
       "type": "video",

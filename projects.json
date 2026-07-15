@@ -137,12 +137,13 @@
   ],
   "design": [
     {
-      "title": "BCR",
+      "title": "Bothnian Coastal Route",
       "category": "Brand Identity",
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #1e1a2e, #2e1e3a",
-      "src": "images/design/BCR_logo_RGB_liggande_600px.jpg"
+      "src": "images/design/BCR_logo_RGB_liggande_600px.jpg",
+      "description": "Logo design."
     },
     {
       "title": "Digipartner",
@@ -150,7 +151,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #1a1e1e, #1a2e2e",
-      "src": "images/design/Digipartner_Logo_black_800px.jpg"
+      "src": "images/design/Digipartner_Logo_black_800px.jpg",
+      "description": "Logo design"
     },
     {
       "title": "Nalta Digital",
@@ -158,7 +160,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #181e2a, #1e2840",
-      "src": "images/design/DIGITAL_logotyp_Nalta_RGB.jpg"
+      "src": "images/design/DIGITAL_logotyp_Nalta_RGB.jpg",
+      "description": "Logo design"
     },
     {
       "title": "Bullens",
@@ -166,15 +169,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #2a1a1a, #3a1e1e",
-      "src": "images/design/logo_Bullens_RGB.jpg"
-    },
-    {
-      "title": "Byggproffs",
-      "category": "Brand Identity",
-      "type": "image",
-      "fit": "contain",
-      "gradient": "135deg, #241e18, #3a2a1a",
-      "src": "images/design/logo_Byggproffs_stående_500px.jpg"
+      "src": "images/design/logo_Bullens_RGB.jpg",
+      "description": "Logo design"
     },
     {
       "title": "Reliningsbolaget",
@@ -182,7 +178,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #1e1a2e, #2e1e3a",
-      "src": "images/design/logo_reliningsbolaget_staende_RGB_600px.jpg"
+      "src": "images/design/logo_reliningsbolaget_staende_RGB_600px.jpg",
+      "description": "Logo design"
     },
     {
       "title": "UHT",
@@ -190,7 +187,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #1a1e1e, #1a2e2e",
-      "src": "images/design/logo_uht_RGB_1920px.jpg"
+      "src": "images/design/logo_uht_RGB_1920px.jpg",
+      "description": "Logo design"
     },
     {
       "title": "Qvisto",
@@ -198,7 +196,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #181e2a, #1e2840",
-      "src": "images/design/qvisto_logo_600px.jpg"
+      "src": "images/design/qvisto_logo_600px.jpg",
+      "description": "Logo design"
     },
     {
       "title": "Talko",
@@ -206,7 +205,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #2a1a1a, #3a1e1e",
-      "src": "images/design/talko_LAPP_RGB_800px.jpg"
+      "src": "images/design/talko_LAPP_RGB_800px.jpg",
+      "description": "Logo design"
     },
     {
       "title": "VR",
@@ -214,7 +214,8 @@
       "type": "image",
       "fit": "contain",
       "gradient": "135deg, #241e18, #3a2a1a",
-      "src": "images/design/VR_logotyp__liggande_800px_RGB.jpg"
+      "src": "images/design/VR_logotyp__liggande_800px_RGB.jpg",
+      "description": "Logo design"
     }
   ]
 }

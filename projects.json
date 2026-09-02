@@ -29,6 +29,15 @@
       "description": "Client: HärjedalsKök - Maya + Arnold"
     },
     {
+      "title": "Abstract grains - Houdini",
+      "category": "3D / Video",
+      "type": "video",
+      "gradient": "135deg, #1e1a2e, #2e1e3a",
+      "embedUrl": "https://framerate.tv/embed/79461541-9e8e-45eb-ac3f-55e869beeea9",
+      "thumb": "images/thumbs/abstractGrains.webp",
+      "description": "Abstract grains test"
+    },
+    {
       "title": "Ängsgröna — View 05",
       "category": "3D",
       "type": "image",

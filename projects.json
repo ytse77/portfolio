@@ -167,9 +167,9 @@
       "title": "Enit webb",
       "category": "Webbdesign",
       "type": "image",
-      "gradient": "135deg, #1a1e2a, #1a2640",
-      "src": "images/web/enit_webb.webp",
-      "thumb": "images/thumbs/enit_webb.webp",
+      "fit": "contain",
+      "gradient": "135deg, #1a2a1e, #1e3a2a",
+      "src": "images/design/enit_webb.jpg",
       "description": "Design"
     },
     {

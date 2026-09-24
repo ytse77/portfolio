@@ -1147,7 +1147,7 @@
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
       }),
-      { threshold: 0.08 }
+      { threshold: 0, rootMargin: "0px 0px 2% 0px" }
     );
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
   </script>

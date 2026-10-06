@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://lightbourne.se/" />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
-  <meta name="theme-color" content="#141312" />
+  <meta name="theme-color" content="#191817" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lightbourne.se/" />
   <meta property="og:title" content="Roberto Rodriguez Lightbourne — 3D & Design" />
@@ -32,15 +32,15 @@
        Token names match the original so the theme script is unchanged.
     ───────────────────────────────────────────────────────────────────────── */
     :root {
-      --bg:      #141312;
-      --surface: #1c1a18;
-      --border:  #2e2a26;
+      --bg:      #191817;
+      --surface: #221f1c;
+      --border:  #332e29;
       --text:    #efe9df;
       --muted:   #8a8078;
       --accent:  #9e7649;             /* grease-pencil amber — desaturated */
-      --nav-bg:  rgba(20,19,18,0.88);
-      --overlay: rgba(20,19,18,0.94);
-      --chip-bg:     rgba(20,19,18,0.78);
+      --nav-bg:  rgba(25,24,23,0.88);
+      --overlay: rgba(25,24,23,0.94);
+      --chip-bg:     rgba(25,24,23,0.78);
       --chip-border: rgba(46,42,38,0.85);
 
       --display: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif;
@@ -476,21 +476,6 @@
       padding: 1.8rem;
       background: #fff;
     }
-    /* grease-pencil selection mark */
-    .frame-mark {
-      position: absolute;
-      inset: 9% 7%;
-      border: 2px solid var(--accent);
-      border-radius: 49% 51% 50% 52% / 52% 48% 54% 46%;
-      opacity: 0;
-      transform: scale(0.82) rotate(-7deg);
-      transform-origin: center;
-      transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      pointer-events: none;
-    }
-    .frame:hover .frame-mark,
-    .frame:focus-visible .frame-mark { opacity: 0.9; transform: scale(1) rotate(-6deg); }
-
     .frame-video {
       position: absolute;
       bottom: 0.7rem; left: 0.7rem;
@@ -743,10 +728,6 @@
       animation-delay: calc(var(--i) * 45ms + 120ms);
     }
 
-    @media (hover: none) {
-      .frame-mark { display: none; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .masthead-rule, .headline, .index-block, .about, .masthead-foot,
@@ -827,8 +808,8 @@
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         </button>
         <div class="cv-dropdown" id="cvDropdown">
-          <a class="cv-option" href="images/CV_Roberto_2026_EN.pdf" target="_blank">English</a>
-          <a class="cv-option" href="images/CV_Roberto_2026_SV.pdf" target="_blank">Swedish</a>
+          <a class="cv-option" href="images/CV_Roberto_2026_EN.pdf" target="_blank" rel="noopener">English</a>
+          <a class="cv-option" href="images/CV_Roberto_2026_SV.pdf" target="_blank" rel="noopener">Swedish</a>
         </div>
       </div>
       <span class="mono">Available for select projects</span>
@@ -944,8 +925,16 @@
     const lbDesc     = document.getElementById("lightboxDesc");
     const lbPosition = document.getElementById("lightboxPosition");
 
+    // Pending media-clear timer from closeLightbox(); cancelled if the lightbox
+    // is reopened before it fires, so a quick close→open never blanks the media.
+    let lightboxCloseTimer = null;
+    function cancelMediaReset() {
+      if (lightboxCloseTimer) { clearTimeout(lightboxCloseTimer); lightboxCloseTimer = null; }
+    }
+
     document.getElementById("reelPlay").addEventListener("click", () => {
       if (!reelUrl) return;
+      cancelMediaReset();
       currentProjects = [];
       currentIndex = -1;
       lbTitle.textContent    = "Demo Reel";
@@ -982,7 +971,6 @@
             ${thumb
               ? `<img class="frame-img" src="${thumb}" alt="${p.title}" loading="lazy" decoding="async" />`
               : `<div class="frame-bg" style="background:linear-gradient(${p.gradient});"></div>`}
-            <span class="frame-mark" aria-hidden="true"></span>
             ${p.type === "video" ? `<span class="frame-video">&#9654; Film</span>` : ""}
           </div>
           <div class="frame-caption">
@@ -1054,6 +1042,7 @@
 
     // Lightbox
     function openLightbox(p, index, projects) {
+      cancelMediaReset();
       if (projects !== undefined) {
         currentProjects = projects;
         currentIndex    = index;
@@ -1096,9 +1085,10 @@
 
     function closeLightbox() {
       lightbox.classList.remove("active");
-      setTimeout(() => {
+      lightboxCloseTimer = setTimeout(() => {
         lbMedia.innerHTML        = "";
         lbMedia.style.background = "";
+        lightboxCloseTimer = null;
       }, 300);
       document.body.style.overflow = "";
     }

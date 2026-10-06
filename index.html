@@ -951,7 +951,6 @@
       lbCategory.textContent = "Roberto Rodriguez Lightbourne";
       lbDesc.textContent     = "";
       lbPosition.textContent = "";
-      lbMedia.classList.remove("contain");
       lbMedia.classList.remove("is-image");
       lbMedia.style.background = "";
       lbMedia.innerHTML      = `<iframe src="${reelUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
@@ -1063,7 +1062,6 @@
       lbPosition.textContent = currentProjects.length
         ? "Frame " + String(currentIndex + 1).padStart(2, "0") + " / " + String(currentProjects.length).padStart(2, "0")
         : "";
-      lbMedia.classList.toggle("contain", p.fit === "contain");
       lbMedia.classList.toggle("is-image", p.type === "image" && !!p.src);
       lbMedia.innerHTML      = "";
       lbMedia.style.background = "";

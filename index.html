@@ -470,12 +470,6 @@
       transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .frame:hover .frame-img { transform: scale(1.04); }
-    .frame--contain .frame-window { background: #fff; }
-    .frame--contain .frame-img {
-      object-fit: contain;
-      padding: 1.8rem;
-      background: #fff;
-    }
     .frame-video {
       position: absolute;
       bottom: 0.7rem; left: 0.7rem;
@@ -606,8 +600,24 @@
     }
     .lightbox-media iframe { width: 100%; height: 100%; border: none; display: block; }
     .lightbox-media img { width: 100%; height: 100%; object-fit: contain; }
-    .lightbox-media.contain { background: #fff; }
-    .lightbox-media.contain img { padding: 2.5rem; }
+
+    /* Images conform to their own aspect ratio — no fixed 16:9 letterbox.
+       The frame shrinks to hug the image, capped by the viewport. */
+    .lightbox-media.is-image {
+      width: auto;
+      max-width: 100%;
+      aspect-ratio: auto;
+      max-height: 74vh;
+      background: transparent;
+    }
+    .lightbox-media.is-image img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 74vh;
+      display: block;
+      object-fit: contain;
+    }
 
     .lightbox-info {
       display: flex;
@@ -942,6 +952,7 @@
       lbDesc.textContent     = "";
       lbPosition.textContent = "";
       lbMedia.classList.remove("contain");
+      lbMedia.classList.remove("is-image");
       lbMedia.style.background = "";
       lbMedia.innerHTML      = `<iframe src="${reelUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       lightbox.classList.add("active");
@@ -960,7 +971,6 @@
         const num = String(i + 1).padStart(2, "0");
         const card = document.createElement("div");
         card.className = "frame";
-        if (p.fit === "contain") card.classList.add("frame--contain");
         card.style.setProperty("--i", i);
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
@@ -1054,6 +1064,7 @@
         ? "Frame " + String(currentIndex + 1).padStart(2, "0") + " / " + String(currentProjects.length).padStart(2, "0")
         : "";
       lbMedia.classList.toggle("contain", p.fit === "contain");
+      lbMedia.classList.toggle("is-image", p.type === "image" && !!p.src);
       lbMedia.innerHTML      = "";
       lbMedia.style.background = "";
 

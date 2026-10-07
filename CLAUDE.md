@@ -76,7 +76,7 @@ GoatCounter (cookieless, no consent banner needed) — script tag at the bottom 
 
 ## Local tooling (gitignored)
 
-`admin.html`, `serve.sh`, `serve.bat`, `publish.sh`, and `index.old.html` are **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (they won't arrive via `git clone`). Because they don't sync, copies can drift between machines — check that a machine's `admin.html` matches the description below (e.g. it has **Save to repo folder**) before relying on it.
+`admin.html`, `serve.sh`, `serve.bat`, `publish.sh`, `index.old.html`, and the `trash/` folder are **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (they won't arrive via `git clone`). Because they don't sync, copies can drift between machines — check that a machine's `admin.html` matches the description below (e.g. it has **Save to repo folder**) before relying on it.
 
 ### admin.html — content editor
 
@@ -86,6 +86,7 @@ A self-contained browser GUI for content updates. Its styling mirrors the live s
 - Visual card grid — **drag cards to reorder**, click a card to open an editor modal (title, category, description, embed URL; plus move/delete).
 - Adding a project: drop an image; WebP derivatives are generated in-browser via Canvas (800px thumb + 1920px lightbox version for 3D stills; thumb only for videos; design logos pass through untouched).
 - **Save to repo folder** — writes `projects.json` and all new images straight into the repo, creating subfolders as needed (File System Access API; **Chrome/Edge only**, and only in a secure context). The folder is remembered between visits. In other browsers the button is disabled and the `projects.json only` / `Download ZIP` exports remain.
+- **Removing a project → `trash/`** — Delete in the edit modal only queues the project's files; nothing moves until the next **Save to repo folder**. The save then *copies* each file to `trash/<YYYY-MM-DD_HHMM>/<same repo path>` and removes it from `images/` (copy before remove, so a failure never loses a file; restoring is a straight copy back). Files moved: thumb + lightbox WebP, plus the archival original — exact for projects added in the current session, otherwise matched by name (`images/3d/<base>.*` for stills, `images/thumbnails/<base>.*` for videos, where `<base>` is the WebP's name). Files still used by another project are never moved; a project added and removed before saving just has its unsaved files discarded. The confirm dialog lists exactly what will move. `trash/` is gitignored (never committed or deployed); the next `publish.sh` commits the removals from `images/`. The ZIP / `projects.json only` exports can't delete files and leave them in place. Empty `trash/` by hand when you no longer need it.
 - Caveat: requires a WebP-capable browser for image generation (Chrome/Edge/Firefox — not Safari; the page detects and warns).
 
 ### serve.sh / serve.bat — local server

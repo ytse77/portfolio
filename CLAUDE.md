@@ -56,7 +56,15 @@ The `3D` / `Design` tab buttons (`class="tab-btn"`) and the `All` / `Animated` /
 
 ### Design tokens
 
-The palette lives in CSS custom properties on `:root` and under `html[data-theme="light"]` in `index.html`: `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`, plus `--nav-bg`, `--overlay`, `--chip-bg`, `--chip-border`. Dark is the default ("darkroom"); light is the "paper proof sheet". A nav toggle persists the choice in `localStorage`.
+The palette lives in CSS custom properties on `:root` and under `html[data-theme="light"]` in `index.html`: `--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`, plus `--nav-bg`, `--overlay`, `--chip-bg`, `--chip-border`. Dark is the default ("darkroom"); light is the "paper proof sheet".
+
+The initial theme is set by a small inline `<script>` in `<head>` (before first paint, so light-mode visitors get no dark flash): a saved choice wins, otherwise it follows the OS `prefers-color-scheme`. Only an explicit click on the nav toggle writes `localStorage`, so visitors who never click keep following their OS. **Every `localStorage` access must be wrapped in `try/catch`** — it throws when site data is blocked, and an uncaught throw would stop the whole page script (no projects, no lightbox, no CV menu).
+
+### Stacking and overlays
+
+- `.masthead` is `z-index: 20`, above `.section` (`10`), so the CV dropdown isn't covered by the reel section. Keep the masthead above the sections if you touch these values; nav is `100`, lightbox `300`, film grain `400`.
+- The CV dropdown button carries `aria-expanded`; Escape closes the menu and returns focus to the button.
+- The lightbox uses `inert`: it is `inert` while closed (its buttons can't be tabbed to), and while open the rest of the page's top-level elements are `inert` so focus stays in the viewer. Open it via `showLightbox()` and close via `closeLightbox()` (which restores focus to the card that opened it) rather than toggling the `active` class directly.
 
 ## Contact email
 
@@ -68,7 +76,7 @@ GoatCounter (cookieless, no consent banner needed) — script tag at the bottom 
 
 ## Local tooling (gitignored)
 
-`admin.html`, `serve.sh`, `serve.bat`, `publish.sh`, and `index.old.html` are **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (they won't arrive via `git clone`).
+`admin.html`, `serve.sh`, `serve.bat`, `publish.sh`, and `index.old.html` are **gitignored on purpose** — local only, never deployed, and must be copied manually to other machines (they won't arrive via `git clone`). Because they don't sync, copies can drift between machines — check that a machine's `admin.html` matches the description below (e.g. it has **Save to repo folder**) before relying on it.
 
 ### admin.html — content editor
 

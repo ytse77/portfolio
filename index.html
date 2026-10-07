@@ -23,6 +23,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    // Set the theme before first paint so light-mode visitors don't see a dark
+    // flash. A saved choice wins; otherwise follow the OS. localStorage can throw
+    // when site data is blocked, so it's guarded.
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -813,7 +826,7 @@
     <p class="about">Based in Sweden, I create product visualization, 3D animation and brand identities — working in Houdini, Maya and the Adobe Creative Suite.</p>
     <div class="masthead-foot">
       <div class="cv-wrap">
-        <button class="cv-btn" id="cvBtn">
+        <button class="cv-btn" id="cvBtn" aria-haspopup="true" aria-expanded="false" aria-controls="cvDropdown">
           Download CV
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         </button>
@@ -889,7 +902,7 @@
     <span>© 2026 — Roberto Rodriguez Lightbourne</span>
   </footer>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer" inert>
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">[ close ]</button>
     <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous project">&#8249;</button>
     <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next project">&#8250;</button>
@@ -905,22 +918,23 @@
   </div>
 
   <script>
-    // ── Theme toggle (unchanged mechanics) ───────────────────────────────────
+    // ── Theme toggle (initial theme is set by the inline script in <head>) ───
     const moonSVG = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
     const sunSVG  = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       document.getElementById('themeToggle').innerHTML = theme === 'dark' ? moonSVG : sunSVG;
-      localStorage.setItem('theme', theme);
     }
 
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    applyTheme(localStorage.getItem('theme') || (prefersLight ? 'light' : 'dark'));
+    applyTheme(document.documentElement.getAttribute('data-theme'));
 
+    // Only an explicit toggle is saved, so visitors who never click keep
+    // following their OS setting.
     document.getElementById('themeToggle').addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
     });
 
     // ── All content is loaded from projects.json ─────────────────────────────
@@ -942,6 +956,23 @@
       if (lightboxCloseTimer) { clearTimeout(lightboxCloseTimer); lightboxCloseTimer = null; }
     }
 
+    // While closed the lightbox is inert (its buttons can't be tabbed to);
+    // while open the rest of the page is inert, so focus stays in the viewer.
+    const pageRegions = [...document.body.children].filter(el => el !== lightbox && el.tagName !== "SCRIPT");
+    let lightboxReturnFocus = null;
+
+    function showLightbox() {
+      if (!lightbox.classList.contains("active")) {
+        lightboxReturnFocus = document.activeElement;
+        lightbox.classList.add("active");
+        lightbox.inert = false;
+        pageRegions.forEach(el => { el.inert = true; });
+        document.getElementById("lightboxClose").focus();
+      }
+      document.body.style.overflow = "hidden";
+      updateArrows();
+    }
+
     document.getElementById("reelPlay").addEventListener("click", () => {
       if (!reelUrl) return;
       cancelMediaReset();
@@ -954,9 +985,7 @@
       lbMedia.classList.remove("is-image");
       lbMedia.style.background = "";
       lbMedia.innerHTML      = `<iframe src="${reelUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-      updateArrows();
+      showLightbox();
     });
 
     // Render frames
@@ -1075,9 +1104,7 @@
         lbMedia.innerHTML = `<span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);">Unexposed frame</span>`;
       }
 
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-      updateArrows();
+      showLightbox();
     }
 
     function navigateLightbox(dir) {
@@ -1094,6 +1121,10 @@
 
     function closeLightbox() {
       lightbox.classList.remove("active");
+      lightbox.inert = true;
+      pageRegions.forEach(el => { el.inert = false; });
+      if (lightboxReturnFocus) lightboxReturnFocus.focus({ preventScroll: true });
+      lightboxReturnFocus = null;
       lightboxCloseTimer = setTimeout(() => {
         lbMedia.innerHTML        = "";
         lbMedia.style.background = "";
@@ -1105,14 +1136,24 @@
     // CV dropdown
     const cvBtn      = document.getElementById("cvBtn");
     const cvDropdown = document.getElementById("cvDropdown");
+    function setCvOpen(open) {
+      cvDropdown.classList.toggle("open", open);
+      cvBtn.setAttribute("aria-expanded", String(open));
+    }
     cvBtn.addEventListener("click", e => {
       e.stopPropagation();
-      cvDropdown.classList.toggle("open");
+      setCvOpen(!cvDropdown.classList.contains("open"));
     });
     cvDropdown.querySelectorAll(".cv-option").forEach(a => {
-      a.addEventListener("click", () => cvDropdown.classList.remove("open"));
+      a.addEventListener("click", () => setCvOpen(false));
     });
-    document.addEventListener("click", () => cvDropdown.classList.remove("open"));
+    document.addEventListener("click", () => setCvOpen(false));
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && cvDropdown.classList.contains("open")) {
+        setCvOpen(false);
+        cvBtn.focus();
+      }
+    });
 
     document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
     document.getElementById("lightboxPrev").addEventListener("click", () => navigateLightbox(-1));
